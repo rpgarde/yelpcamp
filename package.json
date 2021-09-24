@@ -1,0 +1,31 @@
+{
+  "name": "yelpcamp",
+  "version": "1.0.0",
+  "description": "Capstone project of Colt Steele's Web Developer Bootcamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "watch": "nodemon index.js",
+    "seed": "node seeds/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpgarde/yelpcamp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rpgarde/yelpcamp/issues"
+  },
+  "homepage": "https://github.com/rpgarde/yelpcamp#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.7"
+  }
+}
