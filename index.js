@@ -2,14 +2,14 @@ const express = require('express')
 const app = express();
 const path = require('path')
 const mongoose = require('mongoose')
+const ejsMate = require('ejs-mate')
 const Campground = require('./models/campground.js')
 const methodOverride = require('method-override')
+const morgan = require('morgan')
 
-mongoose.connect('mongodb://localhost:27017/yelp-camp',{
-    // useNewUrlParser:true,
-    // useCreateIndex:true,
-    // useUnifiedTopology:true
-})
+app.use(morgan('tiny'))
+
+mongoose.connect('mongodb://localhost:27017/yelp-camp',{})
 
 app.use(express.urlencoded({extended:true}))
 app.use(methodOverride('_method'))
@@ -20,6 +20,7 @@ db.once('open',() => {
     console.log('Database Connected')
 })
 
+app.engine('ejs',ejsMate)
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'))
 
@@ -75,6 +76,10 @@ app.get('/makecampground',async (req,res)=>{
     res.send(camp)
 })
 
+app.use((req,res)=>{
+    res.status(404).send('NOT FOUND!')
+})
+
 app.listen(3000, () => {
-    console.log('Now listening on port 3000')
+    console.log('Now listening on port http://localhost:3000/')
 })
